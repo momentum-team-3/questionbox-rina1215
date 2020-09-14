@@ -7,7 +7,7 @@
 #from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from .models import Question
+from .models import Question, Answer
 from .forms import QuestionForm, AnswerForm
 # Create your views here.
 
@@ -17,7 +17,7 @@ from .forms import QuestionForm, AnswerForm
 #RegisteredUserListView
 
 #Each view is responsible for doing one of two things: returning an HttpResponse object containing the content for the requested page, or raising an exception such as Http404
-#class models.User # django.contrib.auth
+
 
 
 
@@ -39,6 +39,7 @@ def add_question(request):
         form = QuestionForm()
     return render(request, 'questionbox/add_question.html', {'form': form})
 
+#@login_required
 def list_questions(request):
     questions = Question.objects.all()
     return render(request, 'questionbox/list_questions.html', {'questions': questions}) #show all questions before selecting to see details
@@ -54,3 +55,14 @@ def show_answers (request, answer_id):
 
 def favorite_question(request, pk): #jason
     pass
+
+
+#def star_note(request, pk):
+    #note = get_object_or_404(Note, pk=pk)
+    #if note.starred:
+        #note.starred = False
+    #else:
+        #note.starred = True
+    #note.save()
+
+    r#eturn JsonResponse({"note_starred": note.starred}, status = 200)

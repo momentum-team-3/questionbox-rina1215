@@ -39,7 +39,7 @@ class Question(models.Model):
     #user = models.ForeignKey(to='users.user', on_delete=models.CASCADE, related_name='questions')
     title = models.CharField(max_length=255)
     body = models.TextField()
-    #time_created = models.DateTimeField(auto_now_add=True)
+    time_created = models.DateTimeField(auto_now_add=True)
     #time_edited = models.DateTimeField(auto_now_add=True)
     #favorited_by= models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='star_question', blank=True)
     #starred = models.BooleanField(default=False)
