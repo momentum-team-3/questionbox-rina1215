@@ -16,9 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from questionbox import views as question_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('',question_views.home, name='home'),
+    path('question/add/', question_views.add_question, name='add_question'),
+    path('questions/list/', question_views.list_questions, name='list_questions'),
+
+    #path('questionbox/', include('questionbox.urls')),
+    #path('', views.index, name='index'),
+    #path('questions/add/', question_views.add_question, name='add_question'),
+    #path('questions/<int:pk>/add_answer', question_views.add_answer, name='add_answer'),
+    #path('question/<int:pk>/star', question_views.star_question, name='star_question'),
 ]
 
 if settings.DEBUG:
@@ -26,6 +36,6 @@ if settings.DEBUG:
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
 
-        # For django versions before 2.0:
-        # url(r'^__debug__/', include(debug_toolbar.urls)),
+        #For django versions before 2.0:
+        #url(r'^__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
